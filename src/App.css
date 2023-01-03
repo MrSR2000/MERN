@@ -72,13 +72,48 @@
   display: flex;
 }
 
+.burger-menu {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
 .link {
   text-decoration: none;
   padding: 10px 15px;
+  margin: 20px;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  /* padding-left: 10px; */
+}
+
+.link span {
+  margin:  0 10px;
+  
+}
+
+.link:hover {
+  background-color: #63d1ef5a;
 }
 
 .selected, .active{
   background-color: black;
   color: white;
 
+}
+
+.container {
+  display: flex;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  min-height: 100vh;
+}
+
+.links.not-expanded {
+  width: 90px;
 }
