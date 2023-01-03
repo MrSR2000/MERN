@@ -16,13 +16,15 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BsFillBagFill, BsFillPenFill } from "react-icons/bs";
 import { CiStopwatch, CiMoneyBill } from "react-icons/ci";
 import { BiMenu } from "react-icons/bi";
+import styled from "styled-components";
 
-// const LinksContainer = style.div`
-// display: flex;
-// flex-direction: column;
-// width: 200px;
-// min-height: 100vh;
-// `;
+const LinksContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: ${(props) => props.width || 200}px;
+  min-height: 100vh;
+  transition: 0.85s;
+`;
 
 function App() {
   const [selectedList, setSelectedList] = useState("");
@@ -61,11 +63,12 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className={`links ${expanded ? '' : 'not-expanded'}`}>
-        <div className="burger-menu" onClick={(e) => setExpanded(!expanded)}>
-          <BiMenu size={32} />
-        </div>
-        
+        {/* <div className={`links ${expanded ? "" : "not-expanded"}`}> */}
+        <LinksContainer width={expanded ? 200 : 90}>
+          <div className="burger-menu" onClick={(e) => setExpanded(!expanded)}>
+            <BiMenu size={32} />
+          </div>
+
           {LISTS.map((l) => (
             <NavLink
               key={l.name}
@@ -77,7 +80,8 @@ function App() {
               {expanded && <span>{l.title}</span>}
             </NavLink>
           ))}
-        </div>
+          </LinksContainer>
+        {/* </div> */}
         {/* {LISTS.map((l) => selectedList === l.name && l.component )} */}
         {/* <button onClick={() => setSelectedList("homework")} className = {selectedList == "homework" ? "selected" : ""}>Homework</button>
       <button onClick={() => setSelectedList("counter")} className = {selectedList == "counter" ? "selected" : ""}>Counter</button> */}

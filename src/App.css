@@ -112,6 +112,7 @@
   flex-direction: column;
   width: 200px;
   min-height: 100vh;
+  transition: .85s;
 }
 
 .links.not-expanded {
