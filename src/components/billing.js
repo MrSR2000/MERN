@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { BILLS } from "../constants";
-import { BsTrash } from "react-icons/bs";
+import { BsAlignCenter, BsTrash } from "react-icons/bs";
 import { BiEdit } from "react-icons/bi";
 // import { PRODUCTS } from "../constants";
 
@@ -63,7 +63,7 @@ const Billing = () => {
 
   const updateProduct = () => {
     setProducts(
-      products.map((p) => 
+      products.map((p) =>
         p.id === selectedProduct.id
           ? { ...selectedProduct, name, units, rate }
           : p
@@ -91,26 +91,33 @@ const Billing = () => {
     <div>
       <h1>Bill</h1>
       <div className="bill-container">
-        {products.map((p, j) => (
-          <div className="product" key={p.id}>
-            <div className="sn">
-              <span>{j + 1}</span>
-            </div>
-            <div className="col">
-              <span>{p.name}</span>
-            </div>
-            <div className="col">
-              <span>{p.units}</span>
-            </div>
-            <div className="col">
-              <span>{p.rate}</span>
-            </div>
-            <div className="col">
-              <BsTrash color={"red"} onClick={() => removeProduct(p.id)} />
-              <BiEdit color={"blue"} onClick={() => handleEditProduct(p)} />
-            </div>
-          </div>
-        ))}
+        <table>
+          <tr>
+            <th>S.N.</th>
+            <th>Product name</th>
+            <th>Units</th>
+            <th>Rate</th>
+            <th>Total</th>
+          </tr>
+
+          {products.map((p, j) => {
+            return (
+              <tr>
+                <td>{j + 1}</td>
+                <td>{p.name}</td>
+                <td>{p.units}</td>
+                <td>{p.rate}</td>
+                <td>{p.units * p.rate}</td>
+                <td>
+                  <BsTrash color={"red"} onClick={() => removeProduct(p.id)} />
+                </td>
+                <td>
+                  <BiEdit color={"blue"} onClick={() => handleEditProduct(p)} />
+                </td>
+              </tr>
+            );
+          })}
+        </table>
       </div>
       <div className="product">
         <input

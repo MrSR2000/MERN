@@ -159,10 +159,10 @@ export const STOCKS = [
   export const BILLS = [
   
     {
-      "product": "",
-      "units": "",
-      "rate": "",
-      "totalAmount": "",
+      "name": "soap",
+      "units": "2",
+      "rate": "20",
+      "totalAmount": "40",
     }
   ]
   
